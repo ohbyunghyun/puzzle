@@ -1,0 +1,26 @@
+#bigdiv {
+  border: 1px solid black;
+  width: 608px;
+  height: 608px;
+  margin: 50px auto;
+}
+
+#smalldiv {
+  border: 1px solid gray;
+  float: left;
+  width: 150px;
+  height: 150px;
+  font-size: 50px;
+  text-align: center;
+  line-height: 140px;
+}
+
+#suk {
+  margin: 0px auto;
+  width: 100px;
+}
+
+#sukbtn { 
+  width: 100px;
+  height: 100px;
+}
