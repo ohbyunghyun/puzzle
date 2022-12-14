@@ -1,7 +1,12 @@
 var container = document.querySelector('#cells');
+var btn = document.querySelector('#Shuffle');
         let num = 16;
+        let win = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0"
+        let nums = []
 
         createcell();
+        reflash();
+        matching();
 
         function createcell() {
             for (let a = 1; a <= num; a++) {
@@ -9,7 +14,7 @@ var container = document.querySelector('#cells');
                 newcell.id = `div${a}`;
                 newcell.setAttribute('index', a);
                 newcell.innerHTML = a;
-                newcell.classList.add('div');   
+                newcell.classList.add('div');
                 newcell.addEventListener('click', function() {
                     change(parseInt(this.getAttribute('index')));
                     console.log(this.getAttribute('index'));
@@ -18,7 +23,33 @@ var container = document.querySelector('#cells');
             }
             selectedCellId = 'div' + num;
             selectedCell = document.getElementById(selectedCellId);
-            selectedCell.classList.add("selected");
+            // selectedCell.classList.add("selected");
+        }
+
+        function fn(value, index) {
+            value.innerText = nums[index];
+        }
+
+        function matching() {
+            document.querySelectorAll(".div").forEach(fn);
+
+            setInterval(unmatching, 200)
+        }
+
+        
+        
+        
+        function reflash() {
+            nums = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            let i = 0;
+            while(i < 15) {
+                let r = ran();
+                if(!nums.includes(r)) {
+                    nums[i] = r;
+                    i++
+                    document.querySelectorAll(".div").innerText = r;
+                }
+            }
         }
 
         function change(clicked) {
@@ -39,6 +70,15 @@ var container = document.querySelector('#cells');
             } else if (clicked == num - 4) {
                 select(clicked);
             }
+            
+        }
+
+        function wincheck() {
+            if(nums.toString() == win) {
+                alert("Win!");
+                reflash();
+                matching();
+            }
         }
 
         function select(index) {
@@ -51,3 +91,16 @@ var container = document.querySelector('#cells');
             newCell.classList.add("selected");
             num = index;
         }
+
+
+
+
+function ran() {
+    return Math.floor(Math.random()*15)+1 // 1~15
+}
+
+function unmatching() {
+    document.querySelectorAll(".div").forEach((value, index) => {
+        nums[index] = parseInt(value.innerText);
+    })
+}
