@@ -58,4 +58,5 @@ div > button{
 
 button:active {
   background-color:paleturquoise;
+  color: paleturquoise;
 }

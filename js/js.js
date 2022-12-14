@@ -1,5 +1,6 @@
 var container = document.querySelector('#cells');
 var btn = document.querySelector('#Shuffle');
+
         let num = 16;
         let win = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0"
         let nums = []
@@ -7,6 +8,11 @@ var btn = document.querySelector('#Shuffle');
         createcell();
         reflash();
         matching();
+
+        btn.onclick = () => {
+            reflash();
+            matching();
+        }
 
         function createcell() {
             for (let a = 1; a <= num; a++) {
@@ -23,7 +29,7 @@ var btn = document.querySelector('#Shuffle');
             }
             selectedCellId = 'div' + num;
             selectedCell = document.getElementById(selectedCellId);
-            // selectedCell.classList.add("selected");
+            selectedCell.classList.add("selected");
         }
 
         function fn(value, index) {
@@ -91,9 +97,6 @@ var btn = document.querySelector('#Shuffle');
             newCell.classList.add("selected");
             num = index;
         }
-
-
-
 
 function ran() {
     return Math.floor(Math.random()*15)+1 // 1~15
