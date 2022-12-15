@@ -59,10 +59,7 @@ var btn = document.querySelector('#Shuffle');
         }
 
         function change(clicked) {
-            if (clicked < 1 || clicked > 16) {
-                return;
-            }
-
+            
             if (clicked == num + 1) {
                 if (clicked % 4 != 1) {
                     select(clicked);
